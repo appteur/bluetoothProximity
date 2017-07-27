@@ -23,6 +23,7 @@
 import UIKit
 import UserNotifications
 import CoreLocation
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Request permission to send notifications
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.alert, .sound]) { (granted, error) in }
+    
+    // Use Firebase library to configure APIs
+    FirebaseApp.configure()
     
     return true
   }
