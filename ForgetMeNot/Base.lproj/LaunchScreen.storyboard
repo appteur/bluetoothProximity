@@ -42,6 +42,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="radar" width="714" height="720"/>
+        <image name="radar" width="240" height="241"/>
     </resources>
 </document>

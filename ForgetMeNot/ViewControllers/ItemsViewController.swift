@@ -34,6 +34,7 @@ class ItemsViewController: UIViewController {
         Beacons.green.item,
         Beacons.purple.item
     ]
+    
   let locationManager = CLLocationManager()
   
   override func viewDidLoad() {
@@ -45,6 +46,18 @@ class ItemsViewController: UIViewController {
     loadItems()
   }
   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let _ = UserDefaults.standard.value(forKey: "com.bt.name") else {
+            // show name modal
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "NewUserVC") {
+                present(vc, animated: true, completion: nil)
+            }
+            return
+        }
+    }
+    
   func loadItems() {
     
     for item in items {
