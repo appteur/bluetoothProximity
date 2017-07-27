@@ -29,7 +29,11 @@ class ItemsViewController: UIViewController {
 	
   @IBOutlet weak var tableView: UITableView!
   
-  var items = [Item]()
+    var items:[Item] = [
+        Beacons.lightBlue.item,
+        Beacons.green.item,
+        Beacons.purple.item
+    ]
   let locationManager = CLLocationManager()
   
   override func viewDidLoad() {
@@ -42,22 +46,27 @@ class ItemsViewController: UIViewController {
   }
   
   func loadItems() {
-    guard let storedItems = UserDefaults.standard.array(forKey: storedItemsKey) as? [Data] else { return }
-    for itemData in storedItems {
-      guard let item = NSKeyedUnarchiver.unarchiveObject(with: itemData) as? Item else { continue }
-      items.append(item)
-      startMonitoringItem(item)
+    
+    for item in items {
+        startMonitoringItem(item)
     }
+    
+//    guard let storedItems = UserDefaults.standard.array(forKey: storedItemsKey) as? [Data] else { return }
+//    for itemData in storedItems {
+//      guard let item = NSKeyedUnarchiver.unarchiveObject(with: itemData) as? Item else { continue }
+//      items.append(item)
+//      startMonitoringItem(item)
+//    }
   }
   
   func persistItems() {
-    var itemsData = [Data]()
-    for item in items {
-      let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
-      itemsData.append(itemData)
-    }
-    UserDefaults.standard.set(itemsData, forKey: storedItemsKey)
-    UserDefaults.standard.synchronize()
+//    var itemsData = [Data]()
+//    for item in items {
+//      let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
+//      itemsData.append(itemData)
+//    }
+//    UserDefaults.standard.set(itemsData, forKey: storedItemsKey)
+//    UserDefaults.standard.synchronize()
   }
 
   func startMonitoringItem(_ item: Item) {
