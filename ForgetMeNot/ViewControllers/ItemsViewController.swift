@@ -50,24 +50,8 @@ class ItemsViewController: UIViewController {
     for item in items {
         startMonitoringItem(item)
     }
-    
-//    guard let storedItems = UserDefaults.standard.array(forKey: storedItemsKey) as? [Data] else { return }
-//    for itemData in storedItems {
-//      guard let item = NSKeyedUnarchiver.unarchiveObject(with: itemData) as? Item else { continue }
-//      items.append(item)
-//      startMonitoringItem(item)
-//    }
   }
   
-  func persistItems() {
-//    var itemsData = [Data]()
-//    for item in items {
-//      let itemData = NSKeyedArchiver.archivedData(withRootObject: item)
-//      itemsData.append(itemData)
-//    }
-//    UserDefaults.standard.set(itemsData, forKey: storedItemsKey)
-//    UserDefaults.standard.synchronize()
-  }
 
   func startMonitoringItem(_ item: Item) {
     let beaconRegion = item.asBeaconRegion()
@@ -81,27 +65,8 @@ class ItemsViewController: UIViewController {
     locationManager.stopRangingBeacons(in: beaconRegion)
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "segueAdd", let viewController = segue.destination as? AddItemViewController {
-      viewController.delegate = self
-    }
-  }
-  
 }
 
-extension ItemsViewController: AddBeacon {
-  func addBeacon(item: Item) {
-    items.append(item)
-    
-    tableView.beginUpdates()
-    let newIndexPath = IndexPath(row: items.count - 1, section: 0)
-    tableView.insertRows(at: [newIndexPath], with: .automatic)
-    tableView.endUpdates()
-    
-    startMonitoringItem(item)
-    persistItems()
-  }
-}
 
 // MARK: UITableViewDataSource
 extension ItemsViewController : UITableViewDataSource {
@@ -129,8 +94,6 @@ extension ItemsViewController : UITableViewDataSource {
       items.remove(at: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .automatic)
       tableView.endUpdates()
-      
-      persistItems()
     }
   }
 }

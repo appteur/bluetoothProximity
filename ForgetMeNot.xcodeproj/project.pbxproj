@@ -12,7 +12,6 @@
 		C00360911E3EA86500234FCD /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608A1E3EA86500234FCD /* Icons.swift */; };
 		C00360921E3EA86500234FCD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608B1E3EA86500234FCD /* Item.swift */; };
 		C00360931E3EA86500234FCD /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608D1E3EA86500234FCD /* ItemCell.swift */; };
-		C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608F1E3EA86500234FCD /* AddItemViewController.swift */; };
 		C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00360901E3EA86500234FCD /* ItemsViewController.swift */; };
 		C00360971E3EA88F00234FCD /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00360961E3EA88F00234FCD /* IconCell.swift */; };
 		FB9CC95C1AD701910038DF33 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9CC95B1AD701910038DF33 /* AppDelegate.swift */; };
@@ -29,7 +28,6 @@
 		C003608A1E3EA86500234FCD /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		C003608B1E3EA86500234FCD /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C003608D1E3EA86500234FCD /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
-		C003608F1E3EA86500234FCD /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		C00360901E3EA86500234FCD /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		C00360961E3EA88F00234FCD /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		FB9CC9561AD701910038DF33 /* ForgetMeNot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForgetMeNot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +86,6 @@
 		C003608E1E3EA86500234FCD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C003608F1E3EA86500234FCD /* AddItemViewController.swift */,
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -211,7 +208,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C00360941E3EA86500234FCD /* AddItemViewController.swift in Sources */,
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
 				C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */,
 				5DD6C1D11F2A76BD006EFEFB /* Beacons.swift in Sources */,
