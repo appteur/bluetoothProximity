@@ -10,11 +10,14 @@ import UIKit
 import Firebase
 
 class FirebaseManager: NSObject {
-
+    
     var ref: DatabaseReference!
     
     override init() {
         super.init()
+        
+        // Use Firebase library to configure APIs
+        FirebaseApp.configure()
         
         ref = Database.database().reference()
     }

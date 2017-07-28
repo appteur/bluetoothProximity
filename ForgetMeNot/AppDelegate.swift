@@ -38,9 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let center = UNUserNotificationCenter.current()
     center.requestAuthorization(options:[.alert, .sound]) { (granted, error) in }
     
-    // Use Firebase library to configure APIs
-    FirebaseApp.configure()
-    
     return true
   }
 	

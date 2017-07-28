@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5A9F9744B0BD0B6E44AD7D3A /* Pods_ForgetMeNot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E1A4B26AA303008CCDD58C /* Pods_ForgetMeNot.framework */; };
 		5DAF3D5A1F2AABF3008D534F /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF3D591F2AABF3008D534F /* NewUserViewController.swift */; };
+		5DAF3D5C1F2AB012008D534F /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF3D5B1F2AB012008D534F /* UserListViewController.swift */; };
+		5DAF3D5E1F2AB110008D534F /* UserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF3D5D1F2AB110008D534F /* UserListTableViewCell.swift */; };
 		5DD6C1D11F2A76BD006EFEFB /* Beacons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD6C1D01F2A76BD006EFEFB /* Beacons.swift */; };
 		C00360541E39747F00234FCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C00360531E39747F00234FCD /* LaunchScreen.storyboard */; };
 		C00360911E3EA86500234FCD /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003608A1E3EA86500234FCD /* Icons.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		2F479DDE62F22C703EFB31FF /* Pods-ForgetMeNot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForgetMeNot.release.xcconfig"; path = "Pods/Target Support Files/Pods-ForgetMeNot/Pods-ForgetMeNot.release.xcconfig"; sourceTree = "<group>"; };
 		5DAF3D591F2AABF3008D534F /* NewUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		5DAF3D5B1F2AB012008D534F /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		5DAF3D5D1F2AB110008D534F /* UserListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListTableViewCell.swift; sourceTree = "<group>"; };
 		5DD6C1D01F2A76BD006EFEFB /* Beacons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Beacons.swift; sourceTree = "<group>"; };
 		97E1A4B26AA303008CCDD58C /* Pods_ForgetMeNot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ForgetMeNot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A37E757C5B8B3D852D290BF7 /* Pods-ForgetMeNot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ForgetMeNot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ForgetMeNot/Pods-ForgetMeNot.debug.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			children = (
 				C003608D1E3EA86500234FCD /* ItemCell.swift */,
 				C00360961E3EA88F00234FCD /* IconCell.swift */,
+				5DAF3D5D1F2AB110008D534F /* UserListTableViewCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			children = (
 				C00360901E3EA86500234FCD /* ItemsViewController.swift */,
 				5DAF3D591F2AABF3008D534F /* NewUserViewController.swift */,
+				5DAF3D5B1F2AB012008D534F /* UserListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -294,8 +300,10 @@
 				C00360971E3EA88F00234FCD /* IconCell.swift in Sources */,
 				C00360951E3EA86500234FCD /* ItemsViewController.swift in Sources */,
 				C28ED2431F2A8F9600563677 /* FirebaseManager.swift in Sources */,
+				5DAF3D5E1F2AB110008D534F /* UserListTableViewCell.swift in Sources */,
 				C28ED24B1F2A9EB200563677 /* UserLog.swift in Sources */,
 				5DD6C1D11F2A76BD006EFEFB /* Beacons.swift in Sources */,
+				5DAF3D5C1F2AB012008D534F /* UserListViewController.swift in Sources */,
 				C00360931E3EA86500234FCD /* ItemCell.swift in Sources */,
 				C28ED24A1F2A9EB200563677 /* User.swift in Sources */,
 				C00360911E3EA86500234FCD /* Icons.swift in Sources */,

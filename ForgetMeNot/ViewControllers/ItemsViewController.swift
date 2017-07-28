@@ -26,8 +26,9 @@ import CoreLocation
 let storedItemsKey = "storedItems"
 
 class ItemsViewController: UIViewController {
-	
-  @IBOutlet weak var tableView: UITableView!
+
+    var firebase: FirebaseManager = FirebaseManager()
+    @IBOutlet weak var tableView: UITableView!
   
     var items:[Item] = [
         Beacons.lightBlue.item,
@@ -77,6 +78,13 @@ class ItemsViewController: UIViewController {
     locationManager.stopMonitoring(for: beaconRegion)
     locationManager.stopRangingBeacons(in: beaconRegion)
   }
+    
+    @IBAction func loadUsersList(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "UserListVC") as? UserListViewController {
+            vc.firebase = firebase
+            present(vc, animated: true, completion: nil)
+        }
+    }
   
 }
 
