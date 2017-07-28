@@ -155,6 +155,12 @@ extension ItemsViewController: CLLocationManagerDelegate {
                 if items[row] == beacon {
                     items[row].beacon = beacon
                     indexPaths += [IndexPath(row: row, section: 0)]
+                    
+                    // report to firebase
+                    let event = LocationEvent.init(item: items[row])
+                    if event.isValid {
+                        firebase.logEvent(event)
+                    }
                 }
             }
         }
