@@ -22,7 +22,7 @@ class NewUserViewController: UIViewController {
     }
 
     @IBAction func actionSave(_ sender: Any) {
-        guard let name = nameLabel.text, name.isEmpty == false else {
+        guard let name = tf_name.text, name.isEmpty == false else {
             return
         }
         
