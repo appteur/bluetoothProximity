@@ -19,6 +19,8 @@ class UserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "User List"
+        
         if let firebase = firebase {
             firebase.getUsers(completion: { [weak self] (userArr) in
                 DispatchQueue.main.async {
