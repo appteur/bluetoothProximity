@@ -38,8 +38,8 @@ class FirebaseManager: NSObject {
         }
     }
     
-    func sendEvent(name:String, user: User) {
-        self.ref.child("logs").child(name).setValue([name: ["timestamp" : user.log.timeStamp, "locationName" : user.log.locationName]])
+    func logEvent(_ event: LocationEvent) {
+        self.ref.child("logs").child(event.user!).setValue(["timestamp" : event.timestamp, "locationName" : event.location as Any])
     }
     
     func parseUsers(userList: [String : [String : Any]]) -> [User] {
