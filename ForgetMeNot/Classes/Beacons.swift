@@ -6,7 +6,7 @@
 //  Copyright © 2017 Ray Wenderlich. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum Beacons {
     // proximity
@@ -46,7 +46,18 @@ enum Beacons {
         }
     }
     
+    var coordinate: CGPoint {
+        switch self {
+        case .lightBlue:
+            return CGPoint(x: 0, y: 0)
+        case .green:
+            return CGPoint(x: 3, y: 0)
+        case .purple:
+            return CGPoint(x: 1.5, y: 4)
+        }
+    }
+    
     var item: Item {
-        return Item.init(name: name, icon: 0, uuid: UUID(uuidString: uuid)!, majorValue: major, minorValue: minor)
+        return Item.init(name: name, icon: 0, uuid: UUID(uuidString: uuid)!, majorValue: major, minorValue: minor, coordinates: coordinate)
     }
 }

@@ -38,12 +38,14 @@ class ItemsViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    var distances: [Item: CLLocationAccuracy] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
-        
+
         setupView()
         loadItems()
     }
@@ -61,6 +63,7 @@ class ItemsViewController: UIViewController {
     }
     
     func loadItems() {
+        
         for item in items {
             startMonitoringItem(item)
         }
@@ -91,7 +94,6 @@ class ItemsViewController: UIViewController {
     }
     
 }
-
 
 // MARK: UITableViewDataSource
 extension ItemsViewController : UITableViewDataSource {
@@ -152,17 +154,21 @@ extension ItemsViewController: CLLocationManagerDelegate {
         var indexPaths = [IndexPath]()
         for beacon in beacons {
             for row in 0..<items.count {
-                if items[row] == beacon {
-                    items[row].beacon = beacon
-                    indexPaths += [IndexPath(row: row, section: 0)]
+                let item = items[row]
+                
+                if item == beacon {
+                    item.beacon = beacon
                     
-                    // report to firebase
-                    let event = LocationEvent.init(item: items[row])
-                    if event.isValid {
-                        firebase.logEvent(event)
-                    }
+                    distances[item] = beacon.accuracy
+                    
+                    indexPaths += [IndexPath(row: row, section: 0)]
                 }
             }
+        }
+        
+        if distances.count == 3 {
+            let phoneCoord = trilaterateWithCenterOfGravity(beaconA: items[0].coordinates, beaconB: items[1].coordinates, beaconC: items[2].coordinates, distanceA: distances[items[0]]!, distanceB: distances[items[1]]!, distanceC: distances[items[2]]!)
+            print("\(phoneCoord)")
         }
         
         // Update beacon locations of visible rows.
@@ -173,7 +179,44 @@ extension ItemsViewController: CLLocationManagerDelegate {
                 cell.refreshLocation()
             }
         }
+    }
+    
+    func trilaterateWithCenterOfGravity(beaconA: CGPoint, beaconB: CGPoint, beaconC: CGPoint, distanceA: Double, distanceB: Double, distanceC: Double) -> CGPoint {
+        let METERS_IN_COORDINATE_UNITS_RATIO = 2.0
         
+        let cogX = (beaconA.x + beaconB.x + beaconC.x) / 3
+        let cogY = (beaconA.y + beaconB.y + beaconC.y) / 3
+        let cog = CGPoint(x: cogX, y: cogY)
+        
+        var nearestBeaconPoint: CGPoint
+        var shortestDistanceInMeters: Double
+        
+        if distanceA < distanceB && distanceA < distanceC {
+            nearestBeaconPoint = beaconA
+            shortestDistanceInMeters = distanceA;
+        } else if distanceB < distanceC {
+            nearestBeaconPoint = beaconB
+            shortestDistanceInMeters = distanceB
+        } else {
+            nearestBeaconPoint = beaconC
+            shortestDistanceInMeters = distanceC
+        }
+        
+        //Distance between nearest beacon and COG
+        let distanceSqToCog = pow(cog.x - nearestBeaconPoint.x, 2) + pow(cog.y - nearestBeaconPoint.y, 2)
+        let distanceToCog = pow(distanceSqToCog, 0.5)
+        
+        //Convert shortest distance in meters into coordinates units.
+        let shortestDistInCoordUnits = shortestDistanceInMeters * METERS_IN_COORDINATE_UNITS_RATIO
+        
+        // On the line between Nearest Beacon and COG find shortestDistance point apart from Nearest Beacon
+        let t = shortestDistInCoordUnits/Double(distanceToCog)
+        let pointsDifference = CGPoint(x: cog.x - nearestBeaconPoint.x, y: cog.y - nearestBeaconPoint.y)
+        let tTimesDifference = CGPoint(x: Double(pointsDifference.x) * t, y: Double(pointsDifference.y) * t)
+        
+        let userLocation = CGPoint(x: nearestBeaconPoint.x + tTimesDifference.x, y: nearestBeaconPoint.y + tTimesDifference.y)
+        
+        return userLocation
     }
 }
 
